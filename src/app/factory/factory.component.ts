@@ -82,7 +82,7 @@ export class FactoryComponent {
     // reset Randoms
     node.children = [];
     // limit number of random numbers to 15
-    if(count < 15) {
+    if(count < 16) {
       for(let i=0; i < count; i++) {
         // generate a random number
         let random = Math.floor(Math.random() * this.upperBound) + this.lowerBound;
