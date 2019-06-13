@@ -1,15 +1,19 @@
 <ngb-accordion #acc="ngbAccordion">
-  <div *ngIf="tree.root.children.length > 0">
-    <ngb-panel [title]="node.name" *ngFor="let node of tree.root.children; let i = index">
+  <div *ngIf="node.children.length > 0">
+    <ngb-panel [title]="childNode.name" *ngFor="let childNode of node.children; let i = index">
       <ng-template ngbPanelContent>
-        <p>Start Time: {{node.timestamp}}</p>
+        <p>Start Time: {{childNode.timestamp}}</p>
 
-        <ul class="rands" *ngIf="node.rands.length > 0">
-          <li *ngFor="let rand of node.rands">{{rand}}</li>
+        <ul class="rands" *ngIf="childNode.rands.length > 0">
+          <li *ngFor="let rand of childNode.rands">{{rand}}</li>
         </ul>
 
-        <button class="button add-factory" (click)="addFactory('test', node)">Add</button>
-        <button class="button remove-factory" (click)="removeFactory(node, tree.root)">Remove</button>
+        <input placeholder="Name" #enteredName />
+        <button class="button add-factory" (click)="addFactory(enteredName.value, childNode)">Add</button>
+        <button class="button remove-factory" (click)="removeFactory(childNode, tree.root)">Remove</button>
+
+        <!-- Recursive call to Factory Component -->
+        <factory [tree]="tree" [node]="childNode" *ngIf="childNode.children"></factory>
       </ng-template>
     </ngb-panel>
   </div>

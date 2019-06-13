@@ -37,13 +37,12 @@ export class Tree {
 
   /** @add node to tree */
   add(name, parent) {
-      // if root node
+    // if root node
     if(parent === null) {
       parent = this.root;
     }
     // push node to tree
-    this.root.children.push(new Node(this.index++, parent, name))
-
+    parent.children.push(new Node(this.index++, parent, name));
   }
 
   /** @remove node from tree based on index */
@@ -59,7 +58,7 @@ export class Tree {
         start.children.splice(i);
       } else {
         // recursive check on children
-        this.remove(node, start.children[i])
+        this.remove(node, start.children[i]);
       }
     }
   }

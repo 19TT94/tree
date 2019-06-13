@@ -4,10 +4,11 @@
       <ng-template ngbPanelContent>
 
         <!-- Controls -->
-        <button class="button" (click)="addFirstFactory('test')">Add</button>
+        <input placeholder="Name" #enteredName />
+        <button class="button add-factory" (click)="addFirstFactory(enteredName.value)">Add</button>
 
         <!-- Children (recursive) -->
-        <factory [tree]="tree" [node]="node"></factory>
+        <factory [tree]="tree" [node]="tree.root"></factory>
 
       </ng-template>
     </ngb-panel>
