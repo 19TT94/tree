@@ -2,45 +2,79 @@
   <div *ngIf="node.children.length > 0">
     <ngb-panel [title]="childNode.name" *ngFor="let childNode of node.children; let i = index">
       <ng-template ngbPanelContent>
-        <!-- Set Times -->
-        <div class="time">
-          <p>Start Date</p>
-          <input type="text" [value]="childNode.timestamp.start" #start/>
-          <button class="border-button" (click)="editStart(start.value)">Edit</button>
+        <div class="factory">
+          <!-- Edit Names -->
+          <div class="edit">
+            <div class="edit-option">
+              <p>Factory: {{childNode.name}}</p>
+              <button class="border-button" *ngIf="!toggleName" (click)="editName()">Edit</button>
+            </div>
+            <div class="edit-option" *ngIf="toggleName">
+              <input type="text" #name/>
+              <button class="border-button" (click)="saveName(name.value, childNode)">Save</button>
+            </div>
+          </div>
+
+          <!-- Set Times -->
+          <div class="edit">
+            <div class="edit-option">
+              <p>Start Date: {{childNode.timestamp.start}}</p>
+              <button class="border-button" *ngIf="!toggleStart" (click)="editStart()">Edit</button>
+            </div>
+            <div class="edit-option" *ngIf="toggleStart">
+              <input type="text" #start/>
+              <button class="border-button" (click)="saveStart(start.value, childNode)">Save</button>
+            </div>
+          </div>
+
+          <div class="edit">
+            <div class="edit-option">
+              <p>End Date: {{childNode.timestamp.end}}</p>
+              <button class="border-button" *ngIf="!toggleEnd" (click)="editEnd()">Edit</button>
+            </div>
+            <div class="edit-option" *ngIf="toggleEnd">
+              <input type="text" #end/>
+              <button class="border-button" (click)="saveEnd(end.value, childNode)">Save</button>
+            </div>
+          </div>
         </div>
 
-        <div class="time">
-          <p>End Date</p>
-          <input type="text" [value]="childNode.timestamp.end" #end/>
-          <button class="border-button" (click)="editEnd(end.value)">Edit</button>
-        </div>
-
-        <!-- Set Bounds -->
-        <div class="bound">
-          <p>Lower Bound for Random Numbers</p>
-          <input type="text" [value]="lowerBound" #lower/>
-          <button class="border-button" (click)="editLowerBound(lower.value)">Edit</button>
-        </div>
-
-        <div class="bound">
-          <p>Upper Bound for Random Numbers</p>
-          <input type="text" [value]="upperBound" #upper/>
-          <button class="border-button" (click)="editUpperBound(upper.value)">Edit</button>
-        </div>
-
-        <!-- Generate Random Numbers -->
-        <div class="generate">
-          <p>Add Random Factories</p>
-          <input type="text" placeholder="Number of Randoms" [value]="childNode.children.length" #count/>
-          <button class="border-button" (click)="generateRandoms(count.value, childNode, $event)">Add Random Factories</button>
-          <button class="border-button remove-factory" (click)="removeAllFactories(childNode, tree.root)">Remove All</button>
+        <div class="edit">
+          <h3>Single Factory</h3>
+          <div class="edit-option">
+            <input placeholder="Name" #enteredName />
+            <button class="border-button add-factory" (click)="addFactory(enteredName.value, childNode, $event)">Add Factory</button>
+            <button class="border-button remove-factory" (click)="removeFactory(childNode)">Remove Factory</button>
+          </div>
         </div>
 
         <!-- Controls -->
         <div class="controls">
-          <input placeholder="Name" #enteredName />
-          <button class="border-button add-factory" (click)="addFactory(enteredName.value, childNode, $event)">Add Single Named Factory</button>
-          <button class="border-button remove-factory" (click)="removeFactory(childNode, tree.root)">Remove By Name</button>
+
+          <h3>Random Factories</h3>
+
+          <!-- Set Bounds -->
+          <div class="edit">
+            <p>Lower Bound for Random Numbers</p>
+            <div class="edit-option">
+              <input type="text" [value]="lowerBound" #lower (input)="editLowerBound(lower.value)"/>
+            </div>
+          </div>
+
+          <div class="edit">
+            <p>Upper Bound for Random Numbers</p>
+            <div class="edit-option">
+              <input type="text" [value]="upperBound" #upper (input)="editUpperBound(upper.value)"/>
+            </div>
+          </div>
+
+          <!-- Generate Random Factories -->
+          <div class="edit generate">
+            <p>Number of random nodes to create</p>
+            <input type="text" [value]="childNode.children.length" #count/>
+            <button class="edit-option border-button" (click)="generateRandoms(count.value, childNode, $event)">Add Random Factories</button>
+            <button class="edit-option border-button remove-factory" (click)="removeAllFactories(childNode, tree.root)">Remove All</button>
+          </div>
         </div>
 
         <!-- Recursive call to Factory Component -->

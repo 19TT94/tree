@@ -65,14 +65,22 @@ export class Tree {
     }
   }
 
+  /** @remove all children from passed node */
   removeAll(node) {
     node.children = [];
   }
 
+  /** @update name */
+  name(name, node) {
+    node.name = name;
+  }
+
+  /** @update start time */
   start(time, node) {
     node.timestamp.start = moment(time, "h:mm a").format("h:mm a");
   }
 
+  /** @update end time */
   end(time, node) {
     node.timestamp.end = moment(time, "h:mm a").format("h:mm a");
   }

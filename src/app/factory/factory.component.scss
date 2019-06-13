@@ -5,3 +5,19 @@
   width: 100%;
   margin: $pad*2 0;
 }
+
+.edit {
+  padding: $pad/2 0;
+  @include flexbox(column, wrap, flex-start, flex-start);
+
+  &-option {
+    @include flexbox(row, wrap, flex-start, flex-start);
+  }
+
+  p,
+  button,
+  input {
+    margin-top: $pad;
+    margin-right: $pad;
+  }
+}

@@ -21,29 +21,60 @@ export class FactoryComponent {
     this.upperBound = 100;
   }
 
+  /** @add factory from name */
   addFactory(name, node, e) {
     this.tree.add(name, node);
     // clear input
     e.target.parentNode.children[0].value = '';
   }
 
-  removeFactory(index, node) {
-    this.tree.remove(index, node);
+  /** @add factory based on node */
+  removeFactory(node) {
+    this.tree.remove(node);
   }
 
-  editStart(time) {
-    this.tree.start(time, this.tree.root);
+  /** @edit name functions */
+  toggleName: boolean = false;
+
+  editName() {
+    this.toggleName = true;
   }
 
-  editEnd(time) {
-    this.tree.end(time, this.node);
+  saveName(name, node) {
+    this.tree.name(name, node);
+    this.toggleName = false;
   }
 
+  /** @edit start/end functions */
+  toggleStart: boolean = false;
+
+  editStart() {
+    this.toggleStart = true;
+  }
+
+  saveStart(time, node) {
+    this.tree.start(time, node);
+    this.toggleStart = false;
+  }
+
+  toggleEnd: boolean = false;
+
+  editEnd() {
+    this.toggleEnd = true;
+  }
+
+  saveEnd(time, node) {
+    this.tree.end(time, node);
+    this.toggleEnd = false;
+  }
+
+  /** @edit bounds */
   editLowerBound(lower) {
     this.lowerBound = lower;
   }
 
   editUpperBound(upper) {
+    console.log(upper);
     this.upperBound = upper;
   }
 
