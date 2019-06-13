@@ -29,8 +29,8 @@ export class FactoryComponent {
   }
 
   /** @add factory based on node */
-  removeFactory(node) {
-    this.tree.remove(node);
+  removeFactory(node, parent) {
+    this.tree.remove(node, parent);
   }
 
   /** @edit name functions */

@@ -39,19 +39,20 @@
           </div>
         </div>
 
+        <!-- Add a Single Factory -->
         <div class="edit">
-          <h3>Single Factory</h3>
+          <h3>Add Single Factory</h3>
           <div class="edit-option">
             <input placeholder="Name" #enteredName />
             <button class="border-button add-factory" (click)="addFactory(enteredName.value, childNode, $event)">Add Factory</button>
-            <button class="border-button remove-factory" (click)="removeFactory(childNode)">Remove Factory</button>
+            <button class="border-button remove-factory" (click)="removeFactory(childNode, this.tree.root)">Remove Factory</button>
           </div>
         </div>
 
-        <!-- Controls -->
+        <!-- Add Random Factories -->
         <div class="controls">
 
-          <h3>Random Factories</h3>
+          <h3>Add Random Factories</h3>
 
           <!-- Set Bounds -->
           <div class="edit">
