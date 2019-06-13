@@ -13,6 +13,14 @@ export class FactoryComponent {
   @Input() tree: Tree;
   @Input() node: Node;
 
+  lower: number;
+  upper: number;
+
+  constructor() {
+    this.lower = 0;
+    this.upper = 100;
+  }
+
   addFactory(name, node, e) {
     this.tree.add(name, node);
     // clear input
@@ -32,25 +40,27 @@ export class FactoryComponent {
   }
 
   editLowerBound(lower) {
-    this.tree.lowerBound(lower, this.node)
+    this.lower = lower;
   }
 
   editUpperBound(upper) {
-    this.tree.upperBound(upper, this.node)
+    this.upper = upper;
   }
 
-  generateRandoms(count, node) {
+  generateRandoms(count, node, e) {
     // reset Randoms
-    node.rands = [];
+    node.children = [];
     // limit number of random numbers to 15
     if(count < 15) {
       for(let i=0; i < count; i++) {
         // generate a random number
-        console.log(node.lower);
-        console.log(node.upper);
         let random = Math.floor(Math.random() * node.upper) + node.lower;
-        node.rands.push(random);
+        this.addFactory(random, node, e);
       }
     }
+  }
+
+  removeAllFactories(node) {
+    this.tree.removeAll(node)
   }
 }

@@ -18,32 +18,29 @@
         <!-- Set Bounds -->
         <div class="bound">
           <p>Lower Bound for Random Numbers</p>
-          <input type="text" [value]="childNode.lower" #lower/>
+          <input type="text" [value]="lower" #lower/>
           <button class="border-button" (click)="editLowerBound(lower.value)">Edit</button>
         </div>
 
         <div class="bound">
           <p>Upper Bound for Random Numbers</p>
-          <input type="text" [value]="childNode.upper" #upper/>
-          <button class="border-button" (click)="editUpperBound(lower.value)">Edit</button>
+          <input type="text" [value]="upper" #upper/>
+          <button class="border-button" (click)="editUpperBound(upper.value)">Edit</button>
         </div>
 
         <!-- Generate Random Numbers -->
         <div class="generate">
-          <p>Add Random Numbers</p>
-          <input type="text" placeholder="Number of Randoms" [value]="childNode.rands.length" #count/>
-          <button class="border-button" (click)="generateRandoms(count.value, childNode)">Edit</button>
+          <p>Add Random Factories</p>
+          <input type="text" placeholder="Number of Randoms" [value]="childNode.children.length" #count/>
+          <button class="border-button" (click)="generateRandoms(count.value, childNode, $event)">Add Random Factories</button>
+          <button class="border-button remove-factory" (click)="removeAllFactories(childNode, tree.root)">Remove All</button>
         </div>
-
-        <ul class="rands" *ngIf="childNode.rands.length > 0">
-          <li *ngFor="let rand of childNode.rands">{{rand}}</li>
-        </ul>
 
         <!-- Controls -->
         <div class="controls">
           <input placeholder="Name" #enteredName />
-          <button class="border-button add-factory" (click)="addFactory(enteredName.value, childNode, $event)">Add New Factory</button>
-          <button class="border-button remove-factory" (click)="removeFactory(childNode, tree.root)">Remove</button>
+          <button class="border-button add-factory" (click)="addFactory(enteredName.value, childNode, $event)">Add Single Named Factory</button>
+          <button class="border-button remove-factory" (click)="removeFactory(childNode, tree.root)">Remove By Name</button>
         </div>
 
         <!-- Recursive call to Factory Component -->
