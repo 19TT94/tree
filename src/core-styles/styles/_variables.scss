@@ -2,7 +2,7 @@
 
 // Standard
 $black: #1E1E24;
-$white: #F2ECE3;
+$white: #F7FFFB;
 
 // Programatic Shades of Gray
 $gray: #bfbfbf;
@@ -11,9 +11,9 @@ $gray-lighter: lighten($gray, 50%);
 $gray-dark: darken($gray, 10%);
 
 // Project Specific
-$rust: #3C1518;
-$rust-lighter: lighten($gray, 50%);
-$rust-dark: darken($gray, 10%);
+$green: #90CC7E;
+$green-light: lighten($gray, 50%);
+$green-dark: darken($gray, 10%);
 
 $divider: $gray;
 $highlight: #edff86;

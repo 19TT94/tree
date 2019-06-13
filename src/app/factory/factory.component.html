@@ -8,9 +8,11 @@
           <li *ngFor="let rand of childNode.rands">{{rand}}</li>
         </ul>
 
-        <input placeholder="Name" #enteredName />
-        <button class="button add-factory" (click)="addFactory(enteredName.value, childNode)">Add</button>
-        <button class="button remove-factory" (click)="removeFactory(childNode, tree.root)">Remove</button>
+        <div class="controls">
+          <input placeholder="Name" #enteredName />
+          <button class="border-button add-factory" (click)="addFactory(enteredName.value, childNode)">Add</button>
+          <button class="border-button remove-factory" (click)="removeFactory(childNode, tree.root)">Remove</button>
+        </div>
 
         <!-- Recursive call to Factory Component -->
         <factory [tree]="tree" [node]="childNode" *ngIf="childNode.children"></factory>

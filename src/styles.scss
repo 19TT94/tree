@@ -4,3 +4,26 @@ body {
   background: $white;
   margin-top: 50px;
 }
+
+.card-header {
+  margin: 0;
+}
+
+.btn {
+  color: $black;
+  text-decoration: none;
+  transition: all ease 0.5s;
+
+  &:hover {
+    text-decoration: none;
+    color: $gray-dark;
+  }
+}
+
+.button {
+  @include standard-button();
+}
+
+.border-button {
+  @include border-button();
+}
