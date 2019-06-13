@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+@import './core-styles/styles';
+
+body {
+  background: $white;
+  margin-top: 50px;
+}

@@ -1,5 +1,15 @@
 <div class="tree">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+  <ngb-accordion #acc="ngbAccordion">
+    <ngb-panel title="root">
+      <ng-template ngbPanelContent>
+        <ngb-accordion #acc="ngbAccordion">
+          <ngb-panel [title]="node.name" *ngFor="let node of tree.data">
+            <ng-template ngbPanelContent *ngIf="node.rands.length > 0">
+              Test1
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
 </div>

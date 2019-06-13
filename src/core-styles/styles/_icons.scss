@@ -1,0 +1,64 @@
+/** ICON DEFAULTS **/
+@mixin small-icons() { // just an example - not sure if we'll need many sizes - $todo
+    svg.icon {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@mixin medium-icons() {
+    svg.icon {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@mixin standard-icon() {
+    padding: $pad; // give it some space for fingers
+    cursor: pointer; // $todo - should have global rule
+    transition: transform 1s, color 0.2s; // $temp
+    &:hover {
+        color: $gray-light;
+        transform: scale(1.3);
+        transition: 0.1s; // $temp
+    }
+}
+
+@mixin large-icons() {
+    svg.icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+// SVG Pluggin
+.svg-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    color: inherit;
+    vertical-align: middle;
+    fill: inherit;
+}
+
+.svg-fill {
+    fill: inherit;
+    stroke: none;
+}
+
+.svg-up {
+    /* default */
+    transform: rotate(0deg);
+}
+
+.svg-right {
+    transform: rotate(90deg);
+}
+
+.svg-down {
+    transform: rotate(180deg);
+}
+
+.svg-left {
+    transform: rotate(-90deg);
+}

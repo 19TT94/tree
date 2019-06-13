@@ -4,15 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // add bootstrap
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// components
+import { FactoryComponent } from './factory/factory.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FactoryComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

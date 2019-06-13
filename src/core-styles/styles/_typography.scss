@@ -1,0 +1,56 @@
+/** FONT MIXINS **/
+// short cuts for fonts and weights
+@mixin title-font() {
+    font-family: "Oswald", "Oswald Medium", "Oswald Light", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+}
+
+@mixin body-font() {
+    font-family: "Montserrat", "Montserrat Bold", "Montserrat SemiBold", "Montserrat Regular", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+/** TYPE PATTERNS **/
+@mixin quiet-voice() {
+    @include body-font();
+    font-size: 12px;
+    line-height: 1.4; // no units on line-height
+    letter-spacing: 0.75px;
+
+    @include bp(3) {
+        font-size: 14px;
+    }
+}
+
+@mixin standard-voice() {
+    @include body-font();
+    font-size: 16px; // please just use pxs.
+    line-height: 1.4; // no units on line-height
+    letter-spacing: 0.02em; // ems for letter-spacing 'kearning'
+    font-weight: 400; // no 'normal' and 'bold' - make sure your font supports this - or the browser will try and fake it - and it'll cause troubles for you
+}
+
+@mixin strong-voice() {
+    @include body-font();
+    font-size: 25px;
+    line-height: 1.4; // no units on line-height
+
+    @include bp(1) {
+        font-size: 30px;
+    }
+}
+
+@mixin loud-voice() {
+    @include title-font();
+    font-size: 35px;
+    line-height: 1.4; // no units on line-height
+
+    // smaller on iphone 5
+    @media (max-width: 374px) {
+        font-size: 30px;
+    }
+
+    @include bp(1) {
+        font-size: 60px;
+    }
+}

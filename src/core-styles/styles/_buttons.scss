@@ -1,0 +1,123 @@
+/** BUTTONS DEFAULTS **/
+@mixin standard-button() {
+    position: relative;
+    background: $blue;
+    color: $white;
+    padding: $pad $pad*1.5;
+    width: auto;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    cursor: pointer;
+
+    @include small-icons();
+
+    .shim {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon {
+        margin-left: $pad;
+    }
+
+    &:hover {
+        background: $blue-light;
+        transition: all ease 0.2s;
+    }
+}
+
+@mixin border-button() {
+    @include standard-button();
+    background: transparent;
+    color: $blue;
+    border: 1px solid $blue;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        transition: width 0.2s;
+        background: $blue;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: $white;
+        background: transparent;
+        transition: all ease 0.2s;
+
+        &::before {
+            width: 100%;
+        }
+    }
+}
+
+@mixin light-button() {
+    @include standard-button();
+    background: transparent;
+    color: $white;
+    border: 1px solid $white;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        transition: width 0.2s;
+        background: $white;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: $blue;
+        background: transparent;
+        transition: all ease 0.2s;
+
+        &::before {
+            width: 100%;
+        }
+    }
+}
+
+@mixin gold-button() {
+    @include light-button();
+    color: $gold;
+    border-color: $gold;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        transition: width 0.2s;
+        background: $gold;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: $white;
+        background: transparent;
+        transition: all ease 0.2s;
+
+        &::before {
+            width: 100%;
+        }
+    }
+}
