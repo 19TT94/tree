@@ -1,14 +1,14 @@
 <div class="tree">
-  <ngb-accordion #acc="ngbAccordion">
-    <ngb-panel title="root">
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel [title]="tree.root.name">
       <ng-template ngbPanelContent>
-        <ngb-accordion #acc="ngbAccordion">
-          <ngb-panel [title]="node.name" *ngFor="let node of tree.data">
-            <ng-template ngbPanelContent *ngIf="node.rands.length > 0">
-              Test1
-            </ng-template>
-          </ngb-panel>
-        </ngb-accordion>
+
+        <!-- Controls -->
+        <button class="button" (click)="addFirstFactory('test')">Add</button>
+
+        <!-- Children (recursive) -->
+        <factory [tree]="tree" [node]="node"></factory>
+
       </ng-template>
     </ngb-panel>
   </ngb-accordion>

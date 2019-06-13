@@ -1,3 +1,16 @@
-<p>
-  factory works!
-</p>
+<ngb-accordion #acc="ngbAccordion">
+  <div *ngIf="tree.root.children.length > 0">
+    <ngb-panel [title]="node.name" *ngFor="let node of tree.root.children; let i = index">
+      <ng-template ngbPanelContent>
+        <p>Start Time: {{node.timestamp}}</p>
+
+        <ul class="rands" *ngIf="node.rands.length > 0">
+          <li *ngFor="let rand of node.rands">{{rand}}</li>
+        </ul>
+
+        <button class="button add-factory" (click)="addFactory('test', node)">Add</button>
+        <button class="button remove-factory" (click)="removeFactory(node, tree.root)">Remove</button>
+      </ng-template>
+    </ngb-panel>
+  </div>
+</ngb-accordion>

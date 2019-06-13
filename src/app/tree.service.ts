@@ -7,45 +7,60 @@ import { Injectable } from '@angular/core';
 /** @defines interface for a single node */
 export class Node {
   id: number;
+  parent: Node;
   name: string;
   rands: Array<number>;
+  children: Array<Node>;
+  timestamp: Object;
 
-  constructor(index, name) {
+  constructor(index, parent, name) {
     this.id = index;
+    this.parent = parent;
     this.name = name;
     this.rands = [];
+    this.children = [];
+    this.timestamp = new Date();
   }
 }
 
 /** @defines tree structure of nodes */
 export class Tree {
-  // array of nodes
-  data: Array<Node>;
-  // current node index
-  index: number
+  // initial index
+  index: number;
+  // initial node in tree
+  root: Node;
 
   constructor() {
-    this.data = [
-      new Node(0, 'root')
-    ];
     this.index = 0;
-  }
-
-  /** @returns array of nodes */
-  getData() {
-    return this.data;
+    this.root = new Node(this.index, null, 'root');
   }
 
   /** @add node to tree */
-  add(name) {
+  add(name, parent) {
+      // if root node
+    if(parent === null) {
+      parent = this.root;
+    }
     // push node to tree
-    this.data.push(new Node(this.index, name));
-    // increment current not index
-    this.index = this.index++;
+    this.root.children.push(new Node(this.index++, parent, name))
+
   }
 
   /** @remove node from tree based on index */
-  remove(index) {
-    this.data.splice(index);
+  remove(node, start) {
+    // if start node is null start at the root
+    if(start === null) {
+      start = this.root;
+    }
+
+    for(let i = 0; i < start.children.length; i++) {
+      // remove node if there is a match
+      if(start.children[i] === node) {
+        start.children.splice(i);
+      } else {
+        // recursive check on children
+        this.remove(node, start.children[i])
+      }
+    }
   }
 }

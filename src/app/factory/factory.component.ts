@@ -1,25 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Tree } from '../tree.service';
+
 
 @Component({
   selector: 'factory',
   templateUrl: './factory.component.html',
-  styleUrls: ['./factory.component.scss']
+  styleUrls: ['./factory.component.scss'],
+  providers: [Tree]
 })
-export class FactoryComponent implements OnInit {
-  id: number;
-  name: string;
-  rands: Array<number>;
-  children: Array<number>;
 
-  constructor() {
-    this.id = 0;
-    this.name = 'Root';
-    this.rands = [];
-    this.children = [];
+export class FactoryComponent {
+  @Input() tree: Tree;
+  @Input() node: Node;
+
+  addFactory(name, node) {
+    this.tree.add(name, node);
   }
 
-  ngOnInit() {
-
+  removeFactory(index, node) {
+    this.tree.remove(index, node);
   }
-
 }

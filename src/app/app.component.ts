@@ -9,9 +9,13 @@ import { Tree } from './tree.service';
 })
 
 export class AppComponent {
-  constructor(private tree: Tree) { }
+  tree: Tree;
 
-  ngOnInit() {
-    this.tree.add("new");
+  constructor(private theTree: Tree) {
+    this.tree = theTree;
+  }
+
+  addFirstFactory(name) {
+    this.tree.add(name, this.tree.root);
   }
 }
