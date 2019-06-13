@@ -19,7 +19,10 @@ export class Node {
     this.name = name;
     this.rands = [];
     this.children = [];
-    this.timestamp = new Date();
+    this.timestamp = {
+      start: new Date().setHours(0,0,0,0),
+      end: null
+    };
   }
 }
 

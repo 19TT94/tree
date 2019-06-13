@@ -11,6 +11,11 @@
       <ngb-panel [title]="tree.root.name">
         <ng-template ngbPanelContent>
 
+          <div class="times">
+            <input class="start" [placeholder]="tree.root.timestamp.start" />
+            <input class="end" [placeholder]="tree.root.timestamp.end === null ? 'Add End Date' : tree.root.timestamp.end" />
+          </div>
+
           <!-- Controls -->
           <div class="controls">
             <input placeholder="Name" #enteredName />

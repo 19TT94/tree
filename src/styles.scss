@@ -27,3 +27,8 @@ body {
 .border-button {
   @include border-button();
 }
+
+input {
+  margin-right: $pad;
+  border-radius: 5px;
+}
