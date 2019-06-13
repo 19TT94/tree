@@ -13,12 +13,12 @@ export class FactoryComponent {
   @Input() tree: Tree;
   @Input() node: Node;
 
-  lower: number;
-  upper: number;
+  lowerBound: number;
+  upperBound: number;
 
   constructor() {
-    this.lower = 0;
-    this.upper = 100;
+    this.lowerBound = 0;
+    this.upperBound = 100;
   }
 
   addFactory(name, node, e) {
@@ -40,11 +40,11 @@ export class FactoryComponent {
   }
 
   editLowerBound(lower) {
-    this.lower = lower;
+    this.lowerBound = lower;
   }
 
   editUpperBound(upper) {
-    this.upper = upper;
+    this.upperBound = upper;
   }
 
   generateRandoms(count, node, e) {
@@ -54,7 +54,7 @@ export class FactoryComponent {
     if(count < 15) {
       for(let i=0; i < count; i++) {
         // generate a random number
-        let random = Math.floor(Math.random() * node.upper) + node.lower;
+        let random = Math.floor(Math.random() * this.upperBound) + this.lowerBound;
         this.addFactory(random, node, e);
       }
     }
