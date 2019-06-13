@@ -3,7 +3,7 @@
   <div class="heading">
     <h1 class="title">Coding Challenge: Tree Structure</h1>
     <p>This is a tree structure visualization made with Angular and Bootstrap. It uses a tree service to define the structure and manage the state of the tree. Then it uses a component called Factory to display the nodes in the tree recursively.</p>
-    <a class="button" href="https://github.com/19TT94/tree" target="_blank">View on Github</a>
+    <a class="button github" href="https://github.com/19TT94/tree" target="_blank">View on Github</a>
   </div>
 
   <div class="accordion-wrapper">
@@ -11,15 +11,10 @@
       <ngb-panel [title]="tree.root.name">
         <ng-template ngbPanelContent>
 
-          <div class="times">
-            <input class="start" [placeholder]="tree.root.timestamp.start" />
-            <input class="end" [placeholder]="tree.root.timestamp.end === null ? 'Add End Date' : tree.root.timestamp.end" />
-          </div>
-
           <!-- Controls -->
           <div class="controls">
-            <input placeholder="Name" #enteredName />
-            <button class="border-button add-factory" (click)="addFirstFactory(enteredName.value)">Add</button>
+            <input placeholder="Enter Name" #enteredName />
+            <button class="button add-factory" (click)="addFirstFactory(enteredName.value, $event)">New Factory</button>
           </div>
 
           <!-- Children (recursive) -->

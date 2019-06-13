@@ -3,11 +3,5 @@
 .controls {
   position: relative;
   width: 100%;
-  height: $pad*5;
-
-  input,
-  button {
-    height: 100%;
-    margin-right: $pad;
-  }
+  margin: $pad*2 0;
 }

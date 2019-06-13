@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Tree } from './tree.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,9 @@ export class AppComponent {
     this.tree = theTree;
   }
 
-  addFirstFactory(name) {
+  addFirstFactory(name, e) {
     this.tree.add(name, this.tree.root);
+    // clear input
+    e.target.parentNode.children[0].value = '';
   }
 }

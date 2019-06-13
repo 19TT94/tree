@@ -2,15 +2,47 @@
   <div *ngIf="node.children.length > 0">
     <ngb-panel [title]="childNode.name" *ngFor="let childNode of node.children; let i = index">
       <ng-template ngbPanelContent>
-        <p>Start Time: {{childNode.timestamp}}</p>
+        <!-- Set Times -->
+        <div class="time">
+          <p>Start Date</p>
+          <input type="text" [value]="childNode.timestamp.start" #start/>
+          <button class="border-button" (click)="editStart(start.value)">Edit</button>
+        </div>
+
+        <div class="time">
+          <p>End Date</p>
+          <input type="text" [value]="childNode.timestamp.end" #end/>
+          <button class="border-button" (click)="editEnd(end.value)">Edit</button>
+        </div>
+
+        <!-- Set Bounds -->
+        <div class="bound">
+          <p>Lower Bound for Random Numbers</p>
+          <input type="text" [value]="childNode.lower" #lower/>
+          <button class="border-button" (click)="editLowerBound(lower.value)">Edit</button>
+        </div>
+
+        <div class="bound">
+          <p>Upper Bound for Random Numbers</p>
+          <input type="text" [value]="childNode.upper" #upper/>
+          <button class="border-button" (click)="editUpperBound(lower.value)">Edit</button>
+        </div>
+
+        <!-- Generate Random Numbers -->
+        <div class="generate">
+          <p>Add Random Numbers</p>
+          <input type="text" placeholder="Number of Randoms" [value]="childNode.rands.length" #count/>
+          <button class="border-button" (click)="generateRandoms(count.value, childNode)">Edit</button>
+        </div>
 
         <ul class="rands" *ngIf="childNode.rands.length > 0">
           <li *ngFor="let rand of childNode.rands">{{rand}}</li>
         </ul>
 
+        <!-- Controls -->
         <div class="controls">
           <input placeholder="Name" #enteredName />
-          <button class="border-button add-factory" (click)="addFactory(enteredName.value, childNode)">Add</button>
+          <button class="border-button add-factory" (click)="addFactory(enteredName.value, childNode, $event)">Add New Factory</button>
           <button class="border-button remove-factory" (click)="removeFactory(childNode, tree.root)">Remove</button>
         </div>
 

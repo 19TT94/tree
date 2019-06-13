@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ export class Node {
   id: number;
   parent: Node;
   name: string;
+  lower: number;
+  upper: number;
   rands: Array<number>;
   children: Array<Node>;
   timestamp: Object;
@@ -17,10 +20,12 @@ export class Node {
     this.id = index;
     this.parent = parent;
     this.name = name;
+    this.lower = 0;
+    this.upper = 100;
     this.rands = [];
     this.children = [];
     this.timestamp = {
-      start: new Date().setHours(0,0,0,0),
+      start: moment(new Date().setHours(0,0,0,0)).format("h:mm a"),
       end: null
     };
   }
@@ -64,5 +69,21 @@ export class Tree {
         this.remove(node, start.children[i]);
       }
     }
+  }
+
+  start(time, node) {
+    node.timestamp.start = moment(time, "h:mm a").format("h:mm a");
+  }
+
+  end(time, node) {
+    node.timestamp.end = moment(time, "h:mm a").format("h:mm a");
+  }
+
+  lowerBound(lower, node) {
+    node.lower = lower;
+  }
+
+  upperBound(upper, node) {
+    node.upper = upper;
   }
 }

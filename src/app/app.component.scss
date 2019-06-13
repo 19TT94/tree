@@ -5,21 +5,23 @@
 
   .heading {
     margin: $pad*2 0;
+
+    .github {
+      padding: $pad $pad*1.5;
+    }
   }
 
   .accordion-wrapper {
     box-shadow: 5px 5px 5px rgba(0, 0 ,0 , 0.2);
 
+    .time {
+      padding-bottom: $pad;
+    }
+
     .controls {
       position: relative;
       width: 100%;
-      height: $pad*5;
       margin: $pad*2 0;
-
-      input,
-      button {
-        height: 100%;
-      }
     }
   }
 }
